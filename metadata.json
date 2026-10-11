@@ -1,0 +1,8 @@
+{
+  "name": "Xylenis - AI CRM for Spas & Salons",
+  "description": "Next-generation AI CRM and order orchestration engine for luxury spas, medical spas, and high-end salons.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

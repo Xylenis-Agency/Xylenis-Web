@@ -1,0 +1,248 @@
+import { ServiceItem, RetailProduct, ClientDossier, ChatMessage, BackbarStockItem, CaseStudy } from '../types/crm';
+
+export const INITIAL_SERVICES: ServiceItem[] = [
+  {
+    id: 'srv-1',
+    name: 'Caviar & Peptide Cellular Facial',
+    category: 'spa',
+    duration: 75,
+    price: 285,
+    therapistId: 'th-1',
+    therapistName: 'Dr. Camille Fontaine',
+  },
+  {
+    id: 'srv-2',
+    name: 'Balayage Gloss & Botanical Bond Infusion',
+    category: 'salon',
+    duration: 120,
+    price: 340,
+    therapistId: 'th-2',
+    therapistName: 'Marcus Vance',
+  },
+  {
+    id: 'srv-3',
+    name: 'Warm Basalt Stone & Hinoki Body Ritual',
+    category: 'spa',
+    duration: 90,
+    price: 260,
+    therapistId: 'th-3',
+    therapistName: 'Elena Rostova',
+  },
+  {
+    id: 'srv-4',
+    name: 'Precision Scissor Reshape & Scalp Exfoliation',
+    category: 'salon',
+    duration: 60,
+    price: 175,
+    therapistId: 'th-2',
+    therapistName: 'Marcus Vance',
+  },
+  {
+    id: 'srv-5',
+    name: 'Micro-Infusion Polynucleotide Glow Treatment',
+    category: 'medspa',
+    duration: 45,
+    price: 420,
+    therapistId: 'th-1',
+    therapistName: 'Dr. Camille Fontaine',
+  },
+];
+
+export const INITIAL_PRODUCTS: RetailProduct[] = [
+  {
+    id: 'prod-1',
+    name: 'Botanical Ceramide Recovery Serum 50ml',
+    brand: 'Xylenis Apothecary',
+    price: 115,
+    stockQty: 18,
+    category: 'Skincare',
+    recommendedFor: 'Post-facial barrier hydration',
+  },
+  {
+    id: 'prod-2',
+    name: 'Silk Amino Bond-Building Masque 250ml',
+    brand: 'Atelier Privé',
+    price: 88,
+    stockQty: 24,
+    category: 'Haircare',
+    recommendedFor: 'Highlighted & bleached tresses',
+  },
+  {
+    id: 'prod-3',
+    name: 'French Maritime Pine Seed Scalp Elixir 30ml',
+    brand: 'Vance Herbals',
+    price: 94,
+    stockQty: 12,
+    category: 'Scalp Rituals',
+    recommendedFor: 'Follicle stimulation & soothing',
+  },
+  {
+    id: 'prod-4',
+    name: 'Cold-Pressed Wild Jasmine Body Balm 200ml',
+    brand: 'Aura Botanicals',
+    price: 78,
+    stockQty: 30,
+    category: 'Bodycare',
+    recommendedFor: 'Daily lipid barrier replenishment',
+  },
+];
+
+export const MOCK_CLIENT_DOSSIER: ClientDossier = {
+  id: 'cl-8492',
+  name: 'Lady Genevieve Laurent',
+  tier: 'VIP Sovereign',
+  phone: '+1 (310) 849-2041',
+  email: 'g.laurent@belair-estates.com',
+  lastVisit: '18 days ago (March 24)',
+  totalVisits: 28,
+  lifetimeValue: 18450,
+  preferredTherapist: 'Marcus Vance (Hair) & Dr. Camille (Aesthetics)',
+  beveragePreference: 'Organic Sencha Green Tea with wildflower honey, chilled sparkling glass with fresh mint',
+  skinHairProfile: {
+    skinType: 'Fitzpatrick Type II, reactive epidermal barrier, prone to seasonal trans-epidermal water loss',
+    hairTexture: 'Fine Scandinavian density, previously lightened to level 9 honey beige',
+    sensitivities: ['Essential lavender oil (>2%)', 'Glycolic acid in high concentrations'],
+    lastFormula: 'Redken Shades EQ: 09NB (15ml) + 09GI (15ml) with Processing Solution (30ml) for 18 mins',
+  },
+  notes: 'Prefers Corner Suite 4 with acoustic white-noise dampening. Requests valet pre-pull 10 mins prior to checkout.',
+  nextRecommendedVisit: 'April 19 (Hair Gloss refresh window & Hydrafacial maintenance)',
+};
+
+export const INITIAL_CHAT_MESSAGES: ChatMessage[] = [
+  {
+    id: 'msg-1',
+    sender: 'ai',
+    text: 'Good afternoon Genevieve. It has been 5 weeks since your last Balayage Gloss with Marcus. Your optimal toner refresh window is next Thursday or Friday to preserve your honey beige tone. Would you like me to hold a suite for you?',
+    timestamp: '11:14 AM',
+  },
+  {
+    id: 'msg-2',
+    sender: 'client',
+    text: 'Hi Xylenis! Yes please! Does Marcus have anything open Friday around 2:30pm? Also can I add the scalp exfoliator ritual?',
+    timestamp: '11:16 AM',
+  },
+  {
+    id: 'msg-3',
+    sender: 'ai',
+    text: "Marcus is in service until 2:00pm, but has an opening at 2:45pm in Atelier Suite 3. I have combined the Balayage Gloss ($340) with the Botanical Scalp Ritual ($85). Total treatment duration will be 2 hours 15 minutes.",
+    timestamp: '11:16 AM',
+    actionCard: {
+      type: 'appointment_proposal',
+      title: 'Friday, April 17 @ 2:45 PM',
+      detail: 'Marcus Vance · Atelier Suite 3 · $425 Total · Card on file ending in 8104',
+      confirmed: false,
+    },
+  },
+];
+
+export const INITIAL_BACKBAR_ITEMS: BackbarStockItem[] = [
+  {
+    id: 'bb-1',
+    name: 'Hydro-Electrolyte Botanical Cleansing Base',
+    brand: 'Xylenis Lab Pro',
+    currentLevelMl: 1850,
+    capacityMl: 5000,
+    reorderThresholdMl: 1000,
+    costPerUnit: 145,
+    lastUsedService: 'Caviar Cellular Facial (35ml logged)',
+    status: 'optimal',
+  },
+  {
+    id: 'bb-2',
+    name: '09NB Irish Cream Gloss Demi-Permanent',
+    brand: 'Atelier Shades EQ',
+    currentLevelMl: 180,
+    capacityMl: 1000,
+    reorderThresholdMl: 250,
+    costPerUnit: 28,
+    lastUsedService: 'Balayage Bond Infusion (30ml logged)',
+    status: 'low',
+  },
+  {
+    id: 'bb-3',
+    name: 'Cold-Pressed Hinoki Cypress Massage Oil',
+    brand: 'Kiso Forest Pure',
+    currentLevelMl: 420,
+    capacityMl: 2000,
+    reorderThresholdMl: 500,
+    costPerUnit: 110,
+    lastUsedService: 'Basalt Stone Ritual (45ml logged)',
+    status: 'low',
+  },
+  {
+    id: 'bb-4',
+    name: 'Polynucleotide Cell Activator Vials',
+    brand: 'Rejuran Pro Clinical',
+    currentLevelMl: 80,
+    capacityMl: 500,
+    reorderThresholdMl: 100,
+    costPerUnit: 340,
+    lastUsedService: 'Micro-Infusion Glow (20ml logged)',
+    status: 'reorder_required',
+  },
+];
+
+export const CASE_STUDIES: CaseStudy[] = [
+  {
+    id: 'cs-1',
+    salonName: 'Maison Privée Haute Coiffure',
+    location: 'Mayfair, London',
+    leaderName: 'Sarah de Vos',
+    leaderTitle: 'Managing Partner & Creative Director',
+    businessType: '14-Chair Luxury Hair Atelier',
+    headlineMetric: '+£128,400',
+    metricLabel: 'Net Retail & Service Order Lift in 9 Months',
+    secondaryMetric: '68% Inquiries Converted Without Front-Desk Call',
+    quote: 'Before Xylenis, our reception desk was perpetually answering WhatsApp queries while guests waited to pay. Now, the AI concierge orchestrates 90% of re-bookings with exact stylist timing. Our front-desk has become a tranquil hospitality lounge.',
+    tags: ['Hair Salon', 'AI Concierge', 'Retail Upsell'],
+  },
+  {
+    id: 'cs-2',
+    salonName: 'Aura Sanctuary & Aesthetic MedSpa',
+    location: 'Beverly Hills, California',
+    leaderName: 'Dr. Julian Vance & Helena Cho',
+    leaderTitle: 'Medical Director & Co-Founder',
+    businessType: '8-Suite Aesthetic Clinic & Day Spa',
+    headlineMetric: '9.4%',
+    metricLabel: 'Backbar Cost Reduced (Down from 15.1% of Revenue)',
+    secondaryMetric: '0% Chemical Shrinkage Across 2,400 Treatments',
+    quote: 'In aesthetic treatments, wastage of expensive peptide serums and medical solutions eats margins silently. Xylenis tracks every milliliter dispensed at checkout against the booked protocol. We saved over $86,000 in product variance alone this year.',
+    tags: ['MedSpa', 'Inventory Control', 'Compliance'],
+  },
+  {
+    id: 'cs-3',
+    salonName: 'The Kyoto Bath & Thermal Pavilion',
+    location: 'Zurich & Kyoto',
+    leaderName: 'Kenji Takahashi',
+    leaderTitle: 'Chief of Wellness Operations',
+    businessType: 'Multi-Location Thermal Spa Retreat',
+    headlineMetric: '99.4%',
+    metricLabel: 'Appointment Arrival Rate (Virtually Zero No-Shows)',
+    secondaryMetric: '3.8 Hours Saved per Receptionist Daily',
+    quote: 'Luxury guests require hyper-personalized care. Xylenis recalls their exact room temperature, allergy histories, and beverage preferences before they step into the treatment pavilion. Our therapist retention is at an all-time 100%.',
+    tags: ['Thermal Spa', 'Guest Dossier', 'Multi-Location'],
+  },
+];
+
+export const FAQS = [
+  {
+    question: 'How does Xylenis migrate our existing data from Boulevard, Mindbody, or Phorest?',
+    answer: 'Our dedicated white-glove onboarding team executes complete data migrations in under 48 hours. We port all historical client contact information, formula history, past orders, retail inventory counts, and future appointment reservations with zero downtime.',
+  },
+  {
+    question: 'How does the AI Concierge avoid scheduling errors or overbooking therapists?',
+    answer: 'Xylenis is strictly integrated into your master scheduling matrix. It obeys custom processing times (e.g. 35-minute developer processing gaps between bleach and tone), station availability, equipment turnarounds, and therapist working hours down to the minute.',
+  },
+  {
+    question: 'Can Xylenis handle split commissions, tips, and chair rental accounting?',
+    answer: 'Yes. Whether your team operates on commission tiers (e.g., 45% service / 15% retail), flat booth rental rates, or hourly hybrid structures, Xylenis automatically calculates earnings on every ticket in real time, with instant digital tip payout logs.',
+  },
+  {
+    question: 'Is Xylenis compliant with medical spa charting and client confidentiality?',
+    answer: 'Absolutely. Xylenis provides encrypted digital intake waivers, contraindication warnings (e.g., Retinol usage prior to chemical peels), photo before/after vaults, and strict role-based access for medical directors and nurse injectors.',
+  },
+  {
+    question: 'What hardware is required at the front desk and stylist stations?',
+    answer: 'Xylenis runs as a lightning-fast responsive web application on any modern iPad, Mac, Windows terminal, or tablet. It pairs seamlessly with wireless Bluetooth receipt printers, barcode inventory scanners, and Stripe/Square/Adyen payment terminals.',
+  },
+];
