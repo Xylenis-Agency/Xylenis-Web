@@ -4,9 +4,10 @@ import { Mail, Phone, MapPin, ShieldCheck, CheckCircle } from 'lucide-react';
 interface FooterProps {
   onOpenDemo: () => void;
   customLogo?: string | null;
+  onOpenAdmin?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenDemo, customLogo }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenDemo, customLogo, onOpenAdmin }) => {
   return (
     <footer className="bg-stone-900 text-stone-300 py-16 border-t border-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -153,6 +154,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemo, customLogo }) => {
             <span className="hover:text-stone-400 cursor-pointer">GDPR Shield</span>
             <span className="hover:text-stone-400 cursor-pointer">Security Whitepaper</span>
             <span className="hover:text-stone-400 cursor-pointer">Privacy Policy</span>
+            {onOpenAdmin && (
+              <button 
+                onClick={onOpenAdmin} 
+                className="hover:text-stone-300 transition-colors cursor-pointer text-stone-600 hover:text-stone-400 text-[11px]"
+                title="Owner Google Sheets sync configuration"
+              >
+                Lead Sync (Admin)
+              </button>
+            )}
           </div>
         </div>
 

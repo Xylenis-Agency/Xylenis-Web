@@ -15,10 +15,11 @@ import { Pricing } from './components/Pricing';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { DemoModal } from './components/DemoModal';
-import { GoogleSheetsIntegrationBar } from './components/GoogleSheetsIntegrationBar';
+import { AdminSheetModal } from './components/AdminSheetModal';
 
 export default function App() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState<boolean>(false);
+  const [isAdminModalOpen, setIsAdminModalOpen] = useState<boolean>(false);
   const [syncKey, setSyncKey] = useState<number>(0);
   const [customLogo, setCustomLogo] = useState<string | null>(() => {
     return localStorage.getItem('xylenis_custom_logo');
@@ -57,10 +58,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-stone-900 selection:bg-stone-800 selection:text-white flex flex-col">
-      {/* Google Sheets Live Backend Integration Bar */}
-      <GoogleSheetsIntegrationBar key={syncKey} onLeadSynced={() => setSyncKey((k) => k + 1)} />
-
-      {/* 1-Row 3-Zone Top Navigation Bar with Click-to-Upload Logo */}
+      {/* 1-Row 3-Zone Top Navigation Bar with Click-to-Upload Logo (Zero Admin Clutter) */}
       <Navbar
         onOpenDemo={handleOpenDemo}
         customLogo={customLogo}
@@ -98,14 +96,26 @@ export default function App() {
         <FaqSection />
       </main>
 
-      {/* Refined Footer */}
-      <Footer onOpenDemo={handleOpenDemo} customLogo={customLogo} />
+      {/* Refined Footer with Discreet Admin Link */}
+      <Footer 
+        onOpenDemo={handleOpenDemo} 
+        customLogo={customLogo} 
+        onOpenAdmin={() => setIsAdminModalOpen(true)}
+      />
 
-      {/* Private Walkthrough / Demo Modal */}
+      {/* Private Walkthrough / Lead Capture Modal for Visitors */}
       <DemoModal
         isOpen={isDemoModalOpen}
         onClose={handleCloseDemo}
         onLeadSubmitted={() => setSyncKey((k) => k + 1)}
+      />
+
+      {/* Hidden Owner Admin Modal for Google Sheets Sync Management */}
+      <AdminSheetModal
+        key={syncKey}
+        isOpen={isAdminModalOpen}
+        onClose={() => setIsAdminModalOpen(false)}
+        onLeadSynced={() => setSyncKey((k) => k + 1)}
       />
     </div>
   );
